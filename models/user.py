@@ -3,6 +3,8 @@
 from models.base_model import BaseModel, Base
 from os import getenv
 from sqlalchemy import column, string
+import hashlib
+import models
 
 
 class User(BaseModel, Base):
@@ -23,3 +25,16 @@ class User(BaseModel, Base):
         password = ''
         first_name = ''
         last_name = ''
+
+    def __init__(self, *args, **kwargs):
+        """initialize user"""
+        super().__init__(*args, **kwargs)
+
+    @property
+    def password(self):
+        return self._password
+
+    @password.setter
+    def password(self, pwd):
+        """hashing password value"""
+        self._password = pwd
