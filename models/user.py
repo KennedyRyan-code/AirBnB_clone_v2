@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 """This module defines a class User"""
-from models.base_model import BaseModel, Base
+
+from models.base_model import BaseModel
 from sqlalchemy import column, string
 import models
 
 
-class User(BaseModel, Base):
+class User(BaseModel):
     """ User Representation """
 
     __tablename__ = 'users'
