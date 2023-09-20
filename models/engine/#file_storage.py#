@@ -64,5 +64,5 @@ class FileStorage:
         """Deletes an object from the list of objects.
         Args:
         obj: The object to delete."""
-        if obj is not None and obj in self.__objects:
-            self.__objects.remove(obj)
+            if obj is not None and obj in self.__objects:
+                self.__objects.remove(obj)
