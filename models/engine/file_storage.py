@@ -19,10 +19,12 @@ class FileStorage:
         A list of all objects, or a list of objects of the specified class.
         """
         if cls is None:
-            return self.__objects
-        else:
-            return [obj for obj in self.__objects if isinstance(obj, cls)]
-
+            cls = type(self)
+            all_objects = []
+            for obj in cls.__dict__.values():
+                if isinstance(obj, cls):
+                    all_objects.append(obj)
+            return all_objects
     def new(self, obj):
         """Adds new object to storage dictionary"""
         self.all().update({obj.to_dict()['__class__'] + '.' + obj.id: obj})
@@ -62,7 +64,6 @@ class FileStorage:
 
     def delete(self, obj=None):
         """Deletes an object from the list of objects.
-        Args:
         obj: The object to delete."""
         if obj is not None and obj in self.__objects:
             self.__objects.remove(obj)
