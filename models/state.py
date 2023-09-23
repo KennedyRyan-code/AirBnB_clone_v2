@@ -23,8 +23,8 @@ class State(BaseModel, Base):
             to current State.id
             """
             from models import storage
-            r = []
-            for i in storage.all(City).values():
-                if i.state_id == self.id:
-                    r.append(i)
-            return r
+            l = []
+            for v in storage.all(City).values():
+                if v.state_id == self.id:
+                    l.append(v)
+            return l
