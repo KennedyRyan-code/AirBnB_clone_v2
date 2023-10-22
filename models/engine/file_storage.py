@@ -66,4 +66,9 @@ class FileStorage:
         """Deletes an object from the list of objects.
         obj: The object to delete."""
         if obj is not None and obj in self.__objects:
-            self.__objects.remove(obj)
+
+	self.__objects.remove(obj)
+
+    def close(self):
+        """Closes the session or removes it."""
+	self.__session.close()	
